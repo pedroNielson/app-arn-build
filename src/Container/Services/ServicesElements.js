@@ -215,7 +215,7 @@ export const ProjectRow = styled.div`
 
 export const ProjectContainer = styled.div`
   background: #eee;
-  min-height: 90vh;
+  min-height: 100vh;
   display: grid;
   padding-top: 1rem;
   align-items: center;

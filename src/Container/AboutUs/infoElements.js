@@ -4,7 +4,7 @@ import img from "../../Images/Pattern 4.png";
 export const InfoContainer = styled.div`
   color: #fff;
   background-color: #1a2142;
-  margin-top: 50px;
+  padding-top: 100px;
   min-height: 1300px;
   @media screen and (max-width: 768px) {
     padding: 100px 0;
@@ -56,6 +56,16 @@ export const TopLine = styled.p`
   letter-spacing: 1.4px;
   text-transform: uppercase;
   margin-bottom: 16px;
+
+  @media screen and (max-width: 515px) {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  @media screen and (max-width: 350px) {
+    font-size: 13px;
+    font-weight: 500;
+  }
 `;
 
 export const Img = styled.img`
@@ -85,6 +95,14 @@ export const Heading = styled.h1`
 
   @media screen and (max-width: 480px) {
     font-size: 32px;
+  }
+
+  @media screen and (max-width: 415px) {
+    font-size: 28px;
+  }
+
+  @media screen and (max-width: 365px) {
+    font-size: 23px;
   }
 `;
 

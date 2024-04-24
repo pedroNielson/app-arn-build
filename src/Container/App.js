@@ -7,7 +7,7 @@ import StickyAd from "./StickyAd";
 import Navbar from "./NavBar";
 import ProjectSection from "./Projects";
 import ContactSec from "./ContactSec";
-import FullScreenImageCarousel from "./Home";
+import HomeComponent from "./Home";
 import AboutUs from "./AboutUs";
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +18,15 @@ const Home = () => {
 
   return (
     <div>
+      <HomeComponent />
+      <Navbar change={change}></Navbar>
+      <Sidebar isOpen={isOpen} change={change}></Sidebar>
+
+      <AboutUs></AboutUs>
+
+      <ServicesSection />
+      <StickyAd></StickyAd>
+      <ProjectSection />
       <FloatingWhatsApp
         className="wpp-tag"
         phoneNumber="5562996934200"
@@ -28,20 +37,14 @@ const Home = () => {
         allowEsc
         allowClickAway
       />
-      <style>
+      {/* <style>
         {`.wpp-tag {
                 position: absolute;
                 z-index:100;
               }`}
-      </style>
-      <Navbar change={change}></Navbar>
-      <Sidebar isOpen={isOpen} change={change}></Sidebar>~
-      {/*<FullScreenImageCarousel/>*/}
-      <AboutUs></AboutUs>
-      <ServicesSection />
-      <StickyAd></StickyAd>
-      <ProjectSection />
+      </style> */}
       <ContactSec />
+
       <Footer />
     </div>
   );
