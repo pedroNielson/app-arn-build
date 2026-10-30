@@ -1,6 +1,6 @@
 name: Deploy GitHub Pages
 on:
-  push: { branches: [main] }
+  push: { branches: [main, master] }
   workflow_dispatch:
 
 permissions: { contents: read, pages: write, id-token: write }
@@ -25,7 +25,8 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    environment: { name: github-pages, url: "${{ steps.deployment.outputs.page_url }}" }
+    environment:
+      { name: github-pages, url: "${{ steps.deployment.outputs.page_url }}" }
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
