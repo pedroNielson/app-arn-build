@@ -1,47 +1,25 @@
 {
-  "name": "app-arn-build",
-  "version": "0.1.0",
+  "name": "arn-site",
+  "version": "1.0.0",
   "private": true,
+  "scripts": { "dev": "next dev", "build": "next build", "start": "next start", "lint": "next lint" },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.2.0",
-    "react-countup": "^6.4.2",
-    "react-dom": "^18.2.0",
-    "react-floating-whatsapp": "^5.0.8",
-    "react-icons": "^4.11.0",
-    "react-router": "^6.16.0",
-    "react-router-dom": "^6.16.0",
-    "react-scripts": "5.0.1",
-    "react-scroll": "^1.8.9",
-    "react-scroll-trigger": "^0.6.14",
-    "react-spring": "^9.7.2",
-    "styled-components": "^6.0.8",
-    "web-vitals": "^2.1.4"
+    "@gsap/react": "^2.1.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "gsap": "^3.12.5",
+    "lucide-react": "^0.460.0",
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^2.5.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.6.0"
   }
 }
