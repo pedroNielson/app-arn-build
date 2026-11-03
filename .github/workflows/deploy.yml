@@ -1,6 +1,6 @@
 name: Deploy GitHub Pages
 on:
-  push: { branches: [main, master] }
+  push: { branches: [main, master, new-version] }
   workflow_dispatch:
 
 permissions: { contents: read, pages: write, id-token: write }
