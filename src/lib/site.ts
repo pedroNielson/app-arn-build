@@ -202,3 +202,73 @@ export const segments = [
     alt: "Painéis solares instalados em estrutura industrial",
   },
 ];
+
+export type Client = {
+  name: string;
+  segment: string;
+  city: string;
+  kwp: string;
+  since: string;
+  quote: string;
+  logo?: string; // quando tiver a logo real: "/images/clients/nome.webp"
+};
+
+// MOCK: troque pelos clientes reais
+export const clients: Client[] = [
+  {
+    name: "Construtora Horizonte",
+    segment: "Comercial",
+    city: "Goiânia - GO",
+    kwp: "42,5 kWp",
+    since: "2023",
+    quote: "Instalação rápida e a conta caiu logo no primeiro mês.",
+  },
+  {
+    name: "Supermercado Bom Preço",
+    segment: "Comercial",
+    city: "Anápolis - GO",
+    kwp: "58,2 kWp",
+    since: "2022",
+    quote: "O retorno veio antes do previsto na proposta.",
+  },
+  {
+    name: "Fazenda Santa Luzia",
+    segment: "Rural",
+    city: "Goianésia - GO",
+    kwp: "31,9 kWp",
+    since: "2023",
+    quote: "O sistema atende toda a irrigação da propriedade.",
+  },
+  {
+    name: "Escola Futuro Brilhante",
+    segment: "Educação",
+    city: "Goiânia - GO",
+    kwp: "24,0 kWp",
+    since: "2024",
+    quote: "Equipe técnica atenciosa em todas as etapas.",
+  },
+  {
+    name: "Clínica Vida Plena",
+    segment: "Saúde",
+    city: "Aparecida de Goiânia - GO",
+    kwp: "18,7 kWp",
+    since: "2024",
+    quote: "Economia que reinvestimos no atendimento.",
+  },
+  {
+    name: "Metalcentro Indústria",
+    segment: "Indústria",
+    city: "Senador Canedo - GO",
+    kwp: "96,3 kWp",
+    since: "2022",
+    quote: "Projeto bem dimensionado e homologado sem dor de cabeça.",
+  },
+  {
+    name: "Condomínio Jardim Azul",
+    segment: "Residencial",
+    city: "Goiânia - GO",
+    kwp: "15,4 kWp",
+    since: "2023",
+    quote: "A taxa de condomínio ficou bem mais leve.",
+  },
+];

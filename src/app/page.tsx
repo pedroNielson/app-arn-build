@@ -8,6 +8,7 @@ import { Municipalities } from "@/components/sections/municipalities";
 import { Projects } from "@/components/sections/projects";
 import { QuoteForm } from "@/components/sections/quote-form";
 import { Contact } from "@/components/sections/contact";
+import { Clients } from "@/components/sections/clients";
 
 export default function Page() {
   return (
@@ -19,6 +20,7 @@ export default function Page() {
         <Services />
         <Municipalities />
         <Projects />
+        <Clients />
         <QuoteForm />
         <Contact />
       </main>
