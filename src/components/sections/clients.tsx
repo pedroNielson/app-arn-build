@@ -3,37 +3,18 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { clients, type Client } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import { Client, clients } from "@/lib/site";
-
-const initials = (n: string) =>
-  n
-    .split(" ")
-    .filter((w) => w.length > 2)
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join("")
-    .toUpperCase();
 
 function Logo({ c, className }: { c: Client; className?: string }) {
-  return c.logo ? (
+  return (
     <Image
       src={c.logo}
       alt=""
-      width={96}
-      height={96}
-      className={cn("object-contain", className)}
+      width={128}
+      height={128}
+      className={cn("shrink-0 rounded-xl object-cover", className)}
     />
-  ) : (
-    <span
-      aria-hidden
-      className={cn(
-        "grid shrink-0 place-items-center rounded-full bg-navy-900 font-display font-black text-brand",
-        className,
-      )}
-    >
-      {initials(c.name)}
-    </span>
   );
 }
 
@@ -48,18 +29,24 @@ export function Clients() {
     if (!selected && d.open) d.close();
   }, [selected]);
 
-  const group = (hidden: boolean) => (
-    <ul className="flex  gap-5 pr-5" aria-hidden={hidden || undefined}>
+  // A lista é repetida 4x (2 por metade da faixa) para nunca sobrar espaço vazio em telas largas.
+  // Só a primeira cópia é lida por leitores de tela e recebe foco.
+  const list = (copy: number) => (
+    <ul
+      key={copy}
+      className="flex gap-5 pr-5"
+      aria-hidden={copy > 0 || undefined}
+    >
       {clients.map((c) => (
         <li key={c.name}>
           <button
             type="button"
-            tabIndex={hidden ? -1 : 0}
+            tabIndex={copy > 0 ? -1 : 0}
             onClick={() => setSelected(c)}
             aria-label={`Ver detalhes: ${c.name}`}
             className="flex h-24 w-64 items-center gap-4 rounded-2xl bg-slate-100 px-5 text-left transition-colors hover:bg-slate-200"
           >
-            <Logo c={c} className="size-12 text-sm" />
+            <Logo c={c} className="size-14" />
             <span className="font-semibold leading-tight text-slate-800">
               {c.name}
             </span>
@@ -69,8 +56,15 @@ export function Clients() {
     </ul>
   );
 
+  const details =
+    selected &&
+    ([
+      selected.kwp && [selected.kwp, "Sistema instalado"],
+      selected.since && [selected.since, "Cliente desde"],
+    ].filter(Boolean) as string[][]);
+
   return (
-    <section id="clientes" className="bg-paper py-20 text-slate-900">
+    <section id="clientes" className="bg-white py-20 text-slate-900">
       <div className="mx-auto max-w-6xl px-5">
         <h2 className="font-display text-3xl font-black md:text-4xl">
           Quem já economiza com a ARN
@@ -82,8 +76,7 @@ export function Clients() {
 
       <div className="mt-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] motion-reduce:overflow-x-auto">
         <div className="flex w-max animate-marquee hover:[animation-play-state:paused] focus-within:[animation-play-state:paused]">
-          {group(false)}
-          {group(true)}
+          {[0, 1, 2, 3].map(list)}
         </div>
       </div>
 
@@ -105,7 +98,7 @@ export function Clients() {
               <X className="size-5" />
             </button>
             <div className="flex items-center gap-4">
-              <Logo c={selected} className="size-16 text-xl" />
+              <Logo c={selected} className="size-16" />
               <div>
                 <h3
                   id="client-title"
@@ -113,24 +106,35 @@ export function Clients() {
                 >
                   {selected.name}
                 </h3>
-                <p className="text-sm text-slate-500">
-                  {selected.segment} · {selected.city}
-                </p>
+                {(selected.segment || selected.city) && (
+                  <p className="text-sm text-slate-500">
+                    {[selected.segment, selected.city]
+                      .filter(Boolean)
+                      .join(" · ")}
+                  </p>
+                )}
               </div>
             </div>
-            <dl className="mt-6 grid grid-cols-2 gap-3 text-sm">
-              <div className="rounded-lg bg-slate-100 p-3">
-                <dd className="font-bold">{selected.kwp}</dd>
-                <dt className="text-xs text-slate-500">Sistema instalado</dt>
-              </div>
-              <div className="rounded-lg bg-slate-100 p-3">
-                <dd className="font-bold">{selected.since}</dd>
-                <dt className="text-xs text-slate-500">Cliente desde</dt>
-              </div>
-            </dl>
-            <blockquote className="mt-6 border-l-4 border-brand pl-4 text-slate-700">
-              “{selected.quote}”
-            </blockquote>
+            {details && details.length > 0 && (
+              <dl className="mt-6 grid grid-cols-2 gap-3 text-sm">
+                {details.map(([v, l]) => (
+                  <div key={l} className="rounded-lg bg-slate-100 p-3">
+                    <dd className="font-bold">{v}</dd>
+                    <dt className="text-xs text-slate-500">{l}</dt>
+                  </div>
+                ))}
+              </dl>
+            )}
+            {selected.quote ? (
+              <blockquote className="mt-6 border-l-4 border-brand pl-4 text-slate-700">
+                “{selected.quote}”
+              </blockquote>
+            ) : (
+              <p className="mt-6 text-slate-600">
+                Cliente da ARN Soluções Energéticas, com energia solar instalada
+                em Goiás.
+              </p>
+            )}
             <Button
               href="#orcamento"
               onClick={() => setSelected(null)}

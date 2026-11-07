@@ -83,96 +83,189 @@ export const municipalEquipment = [
   "Sistemas de abastecimento d'água",
 ];
 
-export type ProjectCategory = "Comercial" | "Residencial" | "Rural";
-export const projects: {
+export type ProjectCategory = "Comercial" | "Residencial" | "Rural" | "Usina";
+
+/**
+ * Valores numéricos para permitir ordenação.
+ * kwp em kWp · generation em kWh/mês · savings em R$/mês · panelW = potência de cada painel (W).
+ */
+export type Project = {
   title: string;
   category: ProjectCategory;
-  city: string;
-  kwp: string;
-  panels: number;
-  savings: string;
-  generation: string;
   image: string;
-}[] = [
+  city?: string;
+  kwp: number;
+  panels: number;
+  panelW?: number;
+  generation: number;
+  savings: number;
+};
+
+export const projects: Project[] = [
+  // Cases antigos: economia original era anual, por isso a divisão por 12
   {
     title: "Prédio comercial",
     category: "Comercial",
     city: "Goiânia - GO",
-    kwp: "23,98",
+    kwp: 23.98,
     panels: 44,
-    savings: "R$ 35.900",
-    generation: "3.190 kWh",
+    generation: 3190,
+    savings: 35900 / 12,
     image: "/images/cases/case-1.webp",
   },
   {
     title: "Condomínio Jardins Atenas",
     category: "Residencial",
     city: "Goiânia - GO",
-    kwp: "12,21",
+    kwp: 12.21,
     panels: 22,
-    savings: "R$ 17.944",
-    generation: "1.567 kWh",
+    generation: 1567,
+    savings: 17944 / 12,
     image: "/images/cases/case-2.webp",
   },
   {
     title: "Fazenda Barreirinha",
     category: "Rural",
     city: "Anápolis - GO",
-    kwp: "10,26",
+    kwp: 10.26,
     panels: 19,
-    savings: "R$ 8.306",
-    generation: "1.314 kWh",
+    generation: 1314,
+    savings: 8306 / 12,
     image: "/images/cases/case-3.webp",
   },
   {
     title: "Escola Caminho para o Futuro",
     category: "Comercial",
     city: "Goiânia - GO",
-    kwp: "16,20",
+    kwp: 16.2,
     panels: 30,
-    savings: "R$ 20.437",
-    generation: "2.135 kWh",
+    generation: 2135,
+    savings: 20437 / 12,
     image: "/images/cases/case-4.webp",
   },
   {
     title: "Condomínio Meridian",
     category: "Residencial",
     city: "Goianésia - GO",
-    kwp: "8,33",
+    kwp: 8.33,
     panels: 15,
-    savings: "R$ 10.450",
-    generation: "1.089 kWh",
+    generation: 1089,
+    savings: 10450 / 12,
     image: "/images/cases/case-5.webp",
   },
   {
     title: "Cliente residencial",
     category: "Residencial",
     city: "Abadia de Goiás - GO",
-    kwp: "7,63",
+    kwp: 7.63,
     panels: 14,
-    savings: "R$ 10.000",
-    generation: "1.013 kWh",
+    generation: 1013,
+    savings: 10000 / 12,
     image: "/images/cases/case-6.webp",
   },
   {
     title: "Bel Fiore Garden Center",
     category: "Comercial",
     city: "Goiânia - GO",
-    kwp: "17,44",
+    kwp: 17.44,
     panels: 32,
-    savings: "R$ 20.795",
-    generation: "2.176 kWh",
+    generation: 2176,
+    savings: 20795 / 12,
     image: "/images/cases/case-7.webp",
   },
   {
     title: "Usina Caicó 1",
-    category: "Comercial",
+    category: "Usina",
     city: "Goiânia - GO",
-    kwp: "31,86",
+    kwp: 31.86,
     panels: 59,
-    savings: "R$ 30.000",
-    generation: "4.000 kWh",
+    generation: 4000,
+    savings: 30000 / 12,
     image: "/images/cases/case-8.webp",
+  },
+  // Projetos novos (fotos associadas na ordem; revisar se necessário)
+  {
+    title: "Usina Araguapaz",
+    category: "Usina",
+    city: "Araguapaz - GO",
+    kwp: 52.92,
+    panels: 98,
+    panelW: 540,
+    generation: 6700,
+    savings: 7000,
+    image: "/images/cases/dji-0002.webp",
+  },
+  {
+    title: "Fábrica Forneria Original",
+    category: "Comercial",
+    city: "Aparecida de Goiânia - GO",
+    kwp: 46.36,
+    panels: 76,
+    panelW: 610,
+    generation: 5300,
+    savings: 5600,
+    image: "/images/cases/dji-0480.webp",
+  },
+  {
+    title: "Jardins Madri",
+    category: "Residencial",
+    kwp: 23.56,
+    panels: 38,
+    panelW: 620,
+    generation: 2789,
+    savings: 2761.11,
+    image: "/images/cases/dji-0024.webp",
+  },
+  {
+    title: "Fazenda Buenos Aires",
+    category: "Rural",
+    kwp: 25.42,
+    panels: 41,
+    panelW: 620,
+    generation: 3200,
+    savings: 3070,
+    image: "/images/cases/dji-fly-2024-01-10.webp",
+  },
+  {
+    title: "iGUi Piscinas Anápolis",
+    category: "Comercial",
+    city: "Anápolis - GO",
+    kwp: 59.8,
+    panels: 104,
+    panelW: 575,
+    generation: 7500,
+    savings: 6650,
+    image: "/images/cases/dji-0860.webp",
+  },
+  {
+    title: "Jardins Atenas",
+    category: "Residencial",
+    kwp: 16.1,
+    panels: 26,
+    panelW: 600,
+    generation: 1966,
+    savings: 2000,
+    image: "/images/cases/dji-0915.webp",
+  },
+  {
+    title: "Jardins Mônaco",
+    category: "Residencial",
+    kwp: 13.2,
+    panels: 24,
+    panelW: 550,
+    generation: 1650,
+    savings: 1633.5,
+    image: "/images/cases/dji-0964.webp",
+  },
+  {
+    title: "Aldeia do Vale",
+    category: "Residencial",
+    kwp: 29.4,
+    panels: 42,
+    panelW: 700,
+    generation: 3500,
+    savings: 3465,
+    image: "/images/cases/whatsapp-2026-11-06.webp",
   },
 ];
 
@@ -203,72 +296,22 @@ export const segments = [
   },
 ];
 
+/** Detalhes (segment, city, kwp, since, quote) são opcionais: o modal só mostra o que existir. */
 export type Client = {
   name: string;
-  segment: string;
-  city: string;
-  kwp: string;
-  since: string;
-  quote: string;
-  logo?: string; // quando tiver a logo real: "/images/clients/nome.webp"
+  logo: string;
+  segment?: string;
+  city?: string;
+  kwp?: string;
+  since?: string;
+  quote?: string;
 };
 
-// MOCK: troque pelos clientes reais
 export const clients: Client[] = [
-  {
-    name: "Construtora Horizonte",
-    segment: "Comercial",
-    city: "Goiânia - GO",
-    kwp: "42,5 kWp",
-    since: "2023",
-    quote: "Instalação rápida e a conta caiu logo no primeiro mês.",
-  },
-  {
-    name: "Supermercado Bom Preço",
-    segment: "Comercial",
-    city: "Anápolis - GO",
-    kwp: "58,2 kWp",
-    since: "2022",
-    quote: "O retorno veio antes do previsto na proposta.",
-  },
-  {
-    name: "Fazenda Santa Luzia",
-    segment: "Rural",
-    city: "Goianésia - GO",
-    kwp: "31,9 kWp",
-    since: "2023",
-    quote: "O sistema atende toda a irrigação da propriedade.",
-  },
-  {
-    name: "Escola Futuro Brilhante",
-    segment: "Educação",
-    city: "Goiânia - GO",
-    kwp: "24,0 kWp",
-    since: "2024",
-    quote: "Equipe técnica atenciosa em todas as etapas.",
-  },
-  {
-    name: "Clínica Vida Plena",
-    segment: "Saúde",
-    city: "Aparecida de Goiânia - GO",
-    kwp: "18,7 kWp",
-    since: "2024",
-    quote: "Economia que reinvestimos no atendimento.",
-  },
-  {
-    name: "Metalcentro Indústria",
-    segment: "Indústria",
-    city: "Senador Canedo - GO",
-    kwp: "96,3 kWp",
-    since: "2022",
-    quote: "Projeto bem dimensionado e homologado sem dor de cabeça.",
-  },
-  {
-    name: "Condomínio Jardim Azul",
-    segment: "Residencial",
-    city: "Goiânia - GO",
-    kwp: "15,4 kWp",
-    since: "2023",
-    quote: "A taxa de condomínio ficou bem mais leve.",
-  },
+  { name: "Bel Fiore", logo: "/images/clients/bel-fiore.webp" },
+  { name: "Caicó", logo: "/images/clients/caico.webp" },
+  { name: "Empório Caseiro", logo: "/images/clients/emporio-caseiro.webp" },
+  { name: "Forneria Original", logo: "/images/clients/forneria-original.webp" },
+  { name: "iGUi", logo: "/images/clients/igui.webp" },
+  { name: "Kron Engenharia", logo: "/images/clients/kron-engenharia.webp" },
 ];
