@@ -114,7 +114,7 @@ export const projects: Project[] = [
     image: "/images/cases/case-1.webp",
   },
   {
-    title: "Condomínio Jardins Atenas",
+    title: "Jardins Atenas",
     category: "Residencial",
     city: "Goiânia - GO",
     kwp: 12.21,
@@ -193,7 +193,7 @@ export const projects: Project[] = [
     panelW: 540,
     generation: 6700,
     savings: 7000,
-    image: "/images/cases/dji-0002.webp",
+    image: "/images/cases/dji-0915.webp",
   },
   {
     title: "Fábrica Forneria Original",
@@ -204,7 +204,7 @@ export const projects: Project[] = [
     panelW: 610,
     generation: 5300,
     savings: 5600,
-    image: "/images/cases/dji-0480.webp",
+    image: "/images/cases/whatsapp-2026-11-06.webp",
   },
   {
     title: "Jardins Madri",
@@ -224,7 +224,7 @@ export const projects: Project[] = [
     panelW: 620,
     generation: 3200,
     savings: 3070,
-    image: "/images/cases/dji-fly-2024-01-10.webp",
+    image: "/images/cases/dji-0480.webp",
   },
   {
     title: "iGUi Piscinas Anápolis",
@@ -235,7 +235,7 @@ export const projects: Project[] = [
     panelW: 575,
     generation: 7500,
     savings: 6650,
-    image: "/images/cases/dji-0860.webp",
+    image: "/images/cases/dji-fly-2024-01-10.webp",
   },
   {
     title: "Jardins Atenas",
@@ -245,7 +245,7 @@ export const projects: Project[] = [
     panelW: 600,
     generation: 1966,
     savings: 2000,
-    image: "/images/cases/dji-0915.webp",
+    image: "/images/cases/dji-0964.webp",
   },
   {
     title: "Jardins Mônaco",
@@ -255,7 +255,7 @@ export const projects: Project[] = [
     panelW: 550,
     generation: 1650,
     savings: 1633.5,
-    image: "/images/cases/dji-0964.webp",
+    image: "/images/cases/dji-0860.webp",
   },
   {
     title: "Aldeia do Vale",
@@ -265,7 +265,7 @@ export const projects: Project[] = [
     panelW: 700,
     generation: 3500,
     savings: 3465,
-    image: "/images/cases/whatsapp-2026-11-06.webp",
+    image: "/images/cases/dji-0002.webp",
   },
 ];
 
